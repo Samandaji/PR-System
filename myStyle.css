@@ -4,3 +4,10 @@ body{
 .content{
   height: 100vh;
 }
+.form-check-input:checked{
+  background:#673AB7;
+  border-color: #673AB7;
+}
+.btn-dark{
+  background: #673AB7 !important;
+}
