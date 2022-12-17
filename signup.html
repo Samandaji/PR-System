@@ -11,12 +11,76 @@
     <link type="text/css" media="screen" rel="stylesheet" href="myStyle.css">
 </head>
 <body>
-    <section>
-        <div class="row"></div>
-    </section>
-   
-                                        
-        
+
+    <section class = "container">
+        <div class="row content d-flex justify-content-center align-items-center">
+          <div class=" col-md-5 pt-3 pb-3">
+            <div class="box-shadow bg-white p-4">
+              <h5 class="text-center mb-4">Sign-up</h5>
+              <h6>Create your account</h6>
+              <form class="mb-4">
+                <div class="form-floating mb-3">
+                  <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="First Name">
+                  <label for="floatingInput">First Name</label>
+                </div>
+
+                   <div class="form-floating mb-3">
+                    <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Other Name">
+                    <label for="floatingInput">Other name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Last Name">
+                    <label for="floatingInput">Last Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Matric">
+                    <label for="floatingInput">Matric number</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Male">
+                    <label class="form-check-label" for="inlineCheckbox1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
+                    <label class="form-check-label" for="inlineCheckbox2">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Other">
+                    <label class="form-check-label" for="inlineCheckbox2">Other</label>
+                  </div>
+                  <select class="form-select-lg mb-3" label=".form-select-lg">
+                    <option selected>Deparment</option>
+                    <option value="1">Computer Science</option>
+                    <option value="2">Software Engineering</option>
+                    <option value="3">Information Technology</option>
+                    <option value="3">Cyber Security</option>
+                  </select>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Email Address">
+                    <label for="floatingpassword">Email Address</label>
+                  </div>
+                <div class="form-floating mb-4">
+                  <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="New password">
+                  <label for="floatingpassword"> New Password</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Comfirm password">
+                    <label for="floatingpassword"> Comfirm Password</label>
+                  </div>
+                <div class="d-grid gap-2 mb-3">
+                  <button type="button" class="btn btn-dark btn-lg border-0 rounded-0">SIGN UP</button>
+                  <div class="sign-up-link mb-3 text-center">
+                    <h6>Already Have an Account?</h6>
+                    <a href="login.html" title="Sign-up" class="text-decoration-none">
+                      Click here
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>   
     <script src="assets/boostrap/js/bootstrap.min.js"></script>
     <script src="assets/boostrap/js/bootstrap.bundle.min.js"></script>
 </body>
