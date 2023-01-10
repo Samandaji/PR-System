@@ -12,8 +12,8 @@
     *@return null
     *@desc  create connection or return error message
     **/
-     public function _dBase()
-     {
+    public function _dBase()
+    {
       $pdo = 'mysql:host=' . $this->dbhost . 'name=' . $this->dbname;
       $options = array(
         PDO::ATTR_PERSISTENT =>true,

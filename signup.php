@@ -18,7 +18,7 @@
             <div class="box-shadow bg-white p-4">
               <h5 class="text-center mb-4">Sign-Up</h5>
               <h6>Create your account</h6>
-           <form class="mb-4">
+           <form class="mb-4" action="sign_up.php" method="post">
             <div class="form-floating mb-3">
                 <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="First Name" name="firstname">
                 <label for="floatingInput">First Name</label>
