@@ -16,71 +16,82 @@
         <div class="row content d-flex justify-content-center align-items-center">
           <div class=" col-md-5 pt-3 pb-3">
             <div class="box-shadow bg-white p-4">
-              <h5 class="text-center mb-4">Sign-up</h5>
+              <h5 class="text-center mb-4">Sign-Up</h5>
               <h6>Create your account</h6>
-              <form class="mb-4">
-                <div class="form-floating mb-3">
-                  <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="First Name">
-                  <label for="floatingInput">First Name</label>
-                </div>
+           <form class="mb-4">
+            <div class="form-floating mb-3">
+                <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="First Name" name="firstname">
+                <label for="floatingInput">First Name</label>
+            </div>
 
-                   <div class="form-floating mb-3">
-                    <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Other Name">
-                    <label for="floatingInput">Other name</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Last Name">
-                    <label for="floatingInput">Last Name</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Matric">
-                    <label for="floatingInput">Matric number</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Male">
-                    <label class="form-check-label" for="inlineCheckbox1">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
-                    <label class="form-check-label" for="inlineCheckbox2">Female</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Other">
-                    <label class="form-check-label" for="inlineCheckbox2">Other</label>
-                  </div>
-                  <select class="form-select-lg mb-3" label=".form-select-lg">
-                    <option selected>Deparment</option>
-                    <option value="1">Computer Science</option>
-                    <option value="2">Software Engineering</option>
-                    <option value="3">Information Technology</option>
-                    <option value="3">Cyber Security</option>
-                  </select>
-                  <div class="form-floating mb-3">
-                    <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingpassword">Email Address</label>
-                  </div>
-                <div class="form-floating mb-4">
-                  <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="New password">
+            <div class="form-floating mb-3">
+                <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Other Name" name="othername">
+                <label for="floatingInput">Other name</label>
+           </div>
+
+           <div class="form-floating mb-3">
+                  <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Last Name" name="lastname">
+                  <label for="floatingInput">Last Name</label>
+           </div>
+
+           <div class="form-floating mb-3">
+              <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="Matric" name="regno">
+              <label for="floatingInput">Matric number</label>
+           </div>
+
+           <div class="form-group mb-3">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Male" checked>
+                <label class="form-check-label" for="male">
+                  Male
+                </label>
+            </div>
+
+            <div class="form-check  form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Female">
+              <label class="form-check-label" for="female">
+                Female
+                </label>
+            </div>
+           </div>
+        
+          <div class="form-group">
+            <select name="deparment" class="form-control rounded-0 mb-3 " required>
+              <option value="" selected>Choose Deparment</option>
+              <option value="1">Computer Science</option>
+              <option value="2">Software Engineering</option>
+              <option value="3">Information Technology</option>
+              <option value="3">Cyber Security</option>
+            </select>
+          </div>
+          
+           
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Email Address" name="email">
+            <label for="floatingpassword">Email Address</label>
+          </div>
+          <div class="form-floating mb-3">
+                  <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="New password" name="newpswd">
                   <label for="floatingpassword"> New Password</label>
-                </div>
-                <div class="form-floating mb-4">
-                    <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Comfirm password">
+          </div>
+         <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Comfirm password" name="comfirmpswd">
                     <label for="floatingpassword"> Comfirm Password</label>
-                  </div>
-                <div class="d-grid gap-2 mb-3">
-                  <button type="button" class="btn btn-dark btn-lg border-0 rounded-0">SIGN UP</button>
+         </div>
+         <div class="d-grid gap-2 mb-3">
+                  <button type="button" class="btn btn-dark btn-lg border-0 rounded-0" name="signup">SIGN UP</button>
                   <div class="sign-up-link mb-3 text-center">
                     <h6>Already Have an Account?</h6>
                     <a href="login.html" title="Sign-up" class="text-decoration-none">
                       Click here
                     </a>
                   </div>
-                </div>
-              </form>
-            </div>
-          </div>
         </div>
-      </section>   
+      </form>
+   </div>
+  </div>
+ </div>
+</section>   
     <script src="assets/boostrap/js/bootstrap.min.js"></script>
     <script src="assets/boostrap/js/bootstrap.bundle.min.js"></script>
 </body>
