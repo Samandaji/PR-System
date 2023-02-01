@@ -1,4 +1,3 @@
-<?php
 <head>
     
 <meta charset="utf-8">
@@ -10,4 +9,3 @@
 <link type="text/css" media="screen" rel="stylesheet" href="">
 <link type="text/css" media="screen" rel="stylesheet" href="myStyle.css">
 </head>
-?>

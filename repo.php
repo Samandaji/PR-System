@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <?php include "assets/include/header.php"; ?>
+    <?php include "assets/includes/header.php"; ?>
     <section>
         <div class="row">
           <h1>The projects will be here</h1>
