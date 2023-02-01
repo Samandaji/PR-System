@@ -1,0 +1,13 @@
+The system will be authenticated users using Email verification during regisration
+The structure of the database will will be communicated using classes
+The php PDO api will be used using the prepared statement and the best
+style will be considered 
+The standard php commenting style will be used
+All classes and methods will be commented using descriptive and brevity
+
+/**
+*method: expected return value
+*@param: description of the parameters
+*desc describe the 
+*/
+All php script will be in a separate file as possible only when necessary
