@@ -1,3 +1,50 @@
+
+<?php 
+
+  $msg = '';
+  $msg_type = '';
+
+  if (isset($_POST['register'])) 
+  {
+
+    require_once "student.class.php";
+
+    // validate the user's inputs
+
+    $full_name = $_POST['firstname'] . " " . $_POST['othername'] . " " . $_POST['lastname'];
+    $reg_number = $_POST['regno'];
+    $deparment = $_POST['deparment'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['newpswd'];
+    $confirmPassword = $_POST['comfirmpswd'];
+    $gender = $_POST['gender'];
+
+    $student = new Student();
+    $studentAdded = $student->register($reg_number, $full_name, $email, $deparment, $username, $password, $confirmPassword);
+
+    if (!$studentAdded) 
+    {
+
+      $msg_type = 'danger';
+      $msg = 'Failed to add the student.';
+      
+    }
+    else
+    {
+
+      $msg_type = 'success';
+      $msg = 'Student added successfully.';
+
+    }
+
+
+    
+  }
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +63,15 @@
         <div class="row content d-flex justify-content-center align-items-center">
           <div class=" col-md-5 pt-3 pb-3">
             <div class="box-shadow bg-white p-4">
+              
+              <div class="alert alert-<?php echo $msg_type; ?>">
+                <?php echo $msg; ?>
+              </div>
+
               <h5 class="text-center mb-4">Sign-Up</h5>
               <h6>Create your account</h6>
-           <form class="mb-4" action="sign_up.php" method="post">
+
+           <form class="mb-4" action="signup.php" method="post">
             <div class="form-floating mb-3">
                 <input type="input" class="form-control rounded-0" id="floatingInput" placeholder="First Name" name="firstname">
                 <label for="floatingInput">First Name</label>
@@ -41,7 +94,7 @@
 
            <div class="form-group mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Male" checked>
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="Male" checked>
                 <label class="form-check-label" for="male">
                   Male
                 </label>
@@ -58,17 +111,21 @@
           <div class="form-group">
             <select name="deparment" class="form-control rounded-0 mb-3 " required>
               <option value="" selected>Choose Deparment</option>
-              <option value="1">Computer Science</option>
-              <option value="2">Software Engineering</option>
-              <option value="3">Information Technology</option>
-              <option value="3">Cyber Security</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Cyber Security">Cyber Security</option>
             </select>
           </div>
           
            
           <div class="form-floating mb-3">
-            <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="Email Address" name="email">
+            <input type="email" class="form-control rounded-0" id="floatingInput" placeholder="Email Address" name="email">
             <label for="floatingpassword">Email Address</label>
+          </div>
+          <div class="form-floating mb-3">
+                  <input type="text" class="form-control rounded-0" id="floatingInput" placeholder="username" name="username">
+                  <label for="floatingpassword"> Username</label>
           </div>
           <div class="form-floating mb-3">
                   <input type="password" class="form-control rounded-0" id="floatingInput" placeholder="New password" name="newpswd">
@@ -79,7 +136,7 @@
                     <label for="floatingpassword"> Comfirm Password</label>
          </div>
          <div class="d-grid gap-2 mb-3">
-                  <button type="button" class="btn btn-dark btn-lg border-0 rounded-0" name="signup">SIGN UP</button>
+                  <button type="submit" name="register" class="btn btn-dark btn-lg border-0 rounded-0" name="signup">SIGN UP</button>
                   <div class="sign-up-link mb-3 text-center">
                     <h6>Already Have an Account?</h6>
                     <a href="login.html" title="Sign-up" class="text-decoration-none">
