@@ -74,22 +74,6 @@ class register{
 
           }
         }
-        if (isset($_POST['register']))
-        {
-           $pdo = dBase::_dBase();
-           $firstname = sanitizeMySQL($_POST['firstname']);
-           $lastname = sanitizeMySQL($_POST['firstname']); 
-           $othername = sanitizeMySQL($_POST['firstname']);
-           $matric_no = sanitizeMySQL($_POST['matric_no']); 
-           $gender = sanitizeMySQL($_POST['gender']);
-           $department = sanitizeMySQL($_POST['department']);
-           $email =validateEmail($_POST['email']);
-           $password = sanitizeMySQL($_POST['password']);
-           register_users( $pdo, $firstname, $lastname, $othername, $matric_no, 
-           $gender, $department, $email, $password);
-        }
-
-      
 }
      
 ?>
