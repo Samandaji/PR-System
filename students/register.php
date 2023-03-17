@@ -68,7 +68,7 @@
               <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
                <div class="alert alert-<?php echo $msg_type; ?>">
                 <?php echo $msg; ?>
-              </div>
+                </div>
               <form class="pt-3" method="POST">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Matric Number.." name="matric">
