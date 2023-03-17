@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 05:06 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Generation Time: Mar 04, 2023 at 04:23 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `administrator` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `staff_id` varchar(200) NOT NULL,
   `full_name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -44,27 +44,28 @@ CREATE TABLE `administrator` (
 --
 
 CREATE TABLE `students` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `reg_number` varchar(200) NOT NULL,
-  `full_name` varchar(200) NOT NULL,
+  `firstname` varchar(200) DEFAULT NULL,
+  `othername` varchar(200) DEFAULT NULL,
+  `lastname` varchar(200) DEFAULT NULL,
   `email` varchar(200) NOT NULL,
-  `department` varchar(200) NOT NULL,
-  `faculty` varchar(200) NOT NULL,
-  `level` varchar(200) NOT NULL,
-  `username` varchar(200) NOT NULL,
+  `department` varchar(200) DEFAULT NULL,
+  `faculty` varchar(200) DEFAULT NULL,
+  `level` varchar(200) DEFAULT NULL,
+  `username` varchar(200) DEFAULT NULL,
   `password` varchar(200) NOT NULL,
-  `date_added` varchar(200) NOT NULL,
-  `gender` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `gender` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`sn`, `reg_number`, `full_name`, `email`, `department`, `faculty`, `level`, `username`, `password`, `date_added`, `gender`) VALUES
-(3, 'CST/16/COM/00836', 'Auwal Ismail Muhammad', 'JAIZNANANA@GMAIL.COM', '2', '', '', 'JAIZ', 'JAIZ', '', ''),
-(1, 'CST/16/COM/00850', 'Abduhamid Idris', 'abdulhamididris16@gmail.com', 'Computer Science', 'Computer Science and Information Technology', '400', 'student', 'student', '03/05/2023', 'Male'),
-(2, 'CST/16/COM/44', 'Dauda Bala', 'daudabala@gmail.com', 'Computer Science', 'FCSIT', '3', 'DAUDA', 'BALA', '', '');
+INSERT INTO `students` (`sn`, `reg_number`, `firstname`, `othername`, `lastname`, `email`, `department`, `faculty`, `level`, `username`, `password`, `date_registered`, `gender`) VALUES
+(4, 'cst/com/16/008', NULL, NULL, NULL, 'sanilawal@gmail.com', NULL, NULL, NULL, NULL, 'gtfdeswsexcv', '2023-03-04 13:19:37', NULL),
+(7, 'cst/com/16/009', NULL, NULL, NULL, 'muktarrabiu2020@gmail.com', NULL, NULL, NULL, NULL, 'ytghjkl', '2023-03-04 13:33:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ INSERT INTO `students` (`sn`, `reg_number`, `full_name`, `email`, `department`, 
 --
 
 CREATE TABLE `supervisors` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `staff_id` varchar(200) NOT NULL,
   `full_name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
@@ -81,7 +82,7 @@ CREATE TABLE `supervisors` (
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `date_added` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -98,7 +99,8 @@ ALTER TABLE `administrator`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`reg_number`),
-  ADD UNIQUE KEY `sn` (`sn`);
+  ADD UNIQUE KEY `sn` (`sn`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `supervisors`
@@ -115,19 +117,19 @@ ALTER TABLE `supervisors`
 -- AUTO_INCREMENT for table `administrator`
 --
 ALTER TABLE `administrator`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `supervisors`
 --
 ALTER TABLE `supervisors`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
