@@ -1,4 +1,11 @@
+<?php
+  session_start();
+  if(isset($_SESSION['email']))
+  {
+    // code...
+ 
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,14 +46,14 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
               <img src="./img/buk_logo.jpg" alt="profile"/>
-              <span class="nav-profile-name">Louis Barnett</span>
+              <span class="nav-profile-name"><?php echo $_SESSION['email'];?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="mdi mdi-settings text-primary"></i>
                 Settings
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="logout.php">
                 <i class="mdi mdi-logout text-primary"></i>
                 Logout
               </a>
@@ -124,4 +131,10 @@
 </body>
 
 </html>
+<?php
+   }
+   else{
+    header("Location:login.php");
+  }
+?>
 

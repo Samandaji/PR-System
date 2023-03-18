@@ -1,7 +1,7 @@
 <?php 
   $msg = '';
   $msg_type = '';
-
+  session_start();
   if (isset($_POST['login'])) 
   {
 
@@ -23,7 +23,7 @@
     }
     else
     {
-
+      $_SESSION['email'] = $email;
       $msg_type = 'success';
       $msg = 'Login successfully.';
       header("Location: dashboard.php" );
