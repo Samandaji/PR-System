@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 18, 2023 at 02:16 AM
+-- Generation Time: Mar 22, 2023 at 07:35 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -40,6 +40,20 @@ CREATE TABLE `administrator` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `notification_id` int NOT NULL,
+  `student_id` int NOT NULL,
+  `supervisor_id` int NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -66,6 +80,22 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`sn`, `reg_number`, `firstname`, `othername`, `lastname`, `email`, `department`, `faculty`, `level`, `username`, `password`, `date_registered`, `gender`) VALUES
 (4, 'cst/com/16/008', NULL, NULL, NULL, 'sanilawal@gmail.com', NULL, NULL, NULL, NULL, 'gtfdeswsexcv', '2023-03-04 13:19:37', NULL),
 (7, 'cst/com/16/009', NULL, NULL, NULL, 'muktarrabiu2020@gmail.com', NULL, NULL, NULL, NULL, '12345', '2023-03-04 13:33:16', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submissions`
+--
+
+CREATE TABLE `submissions` (
+  `submit_id` int NOT NULL,
+  `student_id` int NOT NULL,
+  `supervisor_id` int NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `file` varchar(50) NOT NULL,
+  `comments` varchar(250) NOT NULL,
+  `submission_date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -103,6 +133,12 @@ ALTER TABLE `administrator`
   ADD PRIMARY KEY (`sn`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`notification_id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -110,6 +146,12 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `sn` (`sn`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `email_2` (`email`);
+
+--
+-- Indexes for table `submissions`
+--
+ALTER TABLE `submissions`
+  ADD PRIMARY KEY (`submit_id`);
 
 --
 -- Indexes for table `supervisors`
@@ -130,10 +172,22 @@ ALTER TABLE `administrator`
   MODIFY `sn` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `notification_id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
   MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `submissions`
+--
+ALTER TABLE `submissions`
+  MODIFY `submit_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `supervisors`
