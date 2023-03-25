@@ -5,14 +5,14 @@
   if (isset($_POST['login'])) 
   {
 
-    require_once "student.class.php";
+    require_once "supervisor.class.php";
 
     // validate the user's inputs
     $email = $_POST['email'];
     $password = $_POST['password'];
   
-    $student = new Student();
-    $login = $student->login($email, $password);
+    $staff = new Staff();
+    $login = $staff->login($email, $password);
 
     if (!$login) 
     {

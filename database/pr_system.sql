@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 04, 2023 at 04:23 PM
+-- Generation Time: Mar 18, 2023 at 02:16 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -65,7 +65,7 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`sn`, `reg_number`, `firstname`, `othername`, `lastname`, `email`, `department`, `faculty`, `level`, `username`, `password`, `date_registered`, `gender`) VALUES
 (4, 'cst/com/16/008', NULL, NULL, NULL, 'sanilawal@gmail.com', NULL, NULL, NULL, NULL, 'gtfdeswsexcv', '2023-03-04 13:19:37', NULL),
-(7, 'cst/com/16/009', NULL, NULL, NULL, 'muktarrabiu2020@gmail.com', NULL, NULL, NULL, NULL, 'ytghjkl', '2023-03-04 13:33:16', NULL);
+(7, 'cst/com/16/009', NULL, NULL, NULL, 'muktarrabiu2020@gmail.com', NULL, NULL, NULL, NULL, '12345', '2023-03-04 13:33:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -76,13 +76,21 @@ INSERT INTO `students` (`sn`, `reg_number`, `firstname`, `othername`, `lastname`
 CREATE TABLE `supervisors` (
   `sn` int NOT NULL,
   `staff_id` varchar(200) NOT NULL,
-  `full_name` varchar(200) NOT NULL,
+  `fname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `oname` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
   `phone` varchar(11) NOT NULL,
-  `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `date_added` varchar(200) NOT NULL
+  `date_added` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `supervisors`
+--
+
+INSERT INTO `supervisors` (`sn`, `staff_id`, `fname`, `lname`, `oname`, `email`, `phone`, `password`, `date_added`) VALUES
+(1, 'BUK/COM/001', 'Auwal', 'Abubakar', 'Hamid', 'auwalshikutu@gmail.com', '08166011219', '12345', '2023-03-18 01:17:37.630215');
 
 --
 -- Indexes for dumped tables
@@ -100,14 +108,16 @@ ALTER TABLE `administrator`
 ALTER TABLE `students`
   ADD PRIMARY KEY (`reg_number`),
   ADD UNIQUE KEY `sn` (`sn`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `email_2` (`email`);
 
 --
 -- Indexes for table `supervisors`
 --
 ALTER TABLE `supervisors`
   ADD PRIMARY KEY (`staff_id`),
-  ADD UNIQUE KEY `sn` (`sn`);
+  ADD UNIQUE KEY `sn` (`sn`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -129,7 +139,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `supervisors`
 --
 ALTER TABLE `supervisors`
-  MODIFY `sn` int NOT NULL AUTO_INCREMENT;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
