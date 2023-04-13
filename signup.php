@@ -8,17 +8,18 @@
   {
 
     require_once "student.class.php";
+    require_once "validation.php";
 
     // validate the user's inputs
 
-    $full_name = $_POST['firstname'] . " " . $_POST['othername'] . " " . $_POST['lastname'];
-    $reg_number = $_POST['regno'];
-    $deparment = $_POST['deparment'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['newpswd'];
-    $confirmPassword = $_POST['comfirmpswd'];
-    $gender = $_POST['gender'];
+    $full_name = sanitizeMySQL(($_POST['firstname'] . " " . $_POST['othername'] . " " . $_POST['lastname']);
+    $reg_number = sanitizeMySQL($_POST['regno']);
+    $deparment = sanitizeMySQL($_POST['deparment']);
+    $email = validateEmail($_POST['email']);
+    $username = sanitizeMySQL($_POST['username']);
+    $password = sanitizeMySQL($_POST['newpswd']);
+    $confirmPassword = sanitizeMySQL($_POST['comfirmpswd']);
+    $gender = sanitizeMySQL($_POST['gender']);
 
     $student = new Student();
     $studentAdded = $student->register($reg_number, $full_name, $email, $deparment, $username, $password, $confirmPassword);
@@ -38,8 +39,6 @@
 
     }
 
-
-    
   }
 
 
