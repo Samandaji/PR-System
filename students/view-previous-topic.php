@@ -81,11 +81,89 @@
               </div>
             </div>
           </div>
-          
-         
+           <!-- row -->
+                <div class="row">
+                    <div class="col-sm-10" style="margin: 0 auto;">
+                       <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Shops Overview</h5>
+                                <div class="table-responsive">
+                                    <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                        <div class="row">
+                                            <div class="col-sm" >
+                                                <table id="zero_config" class="table table-striped table-bordered dataTable">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th width="1%">SN</th>
+                                                            <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" width="10%">Blocks</th>
+                                                            <th width="1%">Shops</th>
+                                                            <th width="1%">Status</th>
+                                                            <th width="1%">Delete</th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php 
+                                                    // require_once('../config/db.php');
+                                                    $sql = mysqli_query($connection,"SELECT * FROM allocation " );
+                                                    $i=1;
+                                                    while ($row=mysqli_fetch_array($sql,MYSQLI_ASSOC)) {
+                                                        $status = $row['status'];
+                                                    ?>
+                                                        <tr role="row" class="odd">
+                                                            <td><?php echo $i; ?></td>
+                                                            <td><?php echo getBlockName($connection,$row["block"]); ?></td>  
+                                                             <td><?php echo getShopName($connection,$row["shop"]); ?></td>     
+                                                            <td>
+                                                                <?php 
+                                                                if ($status == 0) {
+                                                                    ?>
+                                                                    <center>
+                                                                    <button type="activate" class="btn btn-success">Active</button>
+                                                                </center>
+                                                                <?php
+                                                                }else{
+                                                                    ?>
+                                                                <center>
+                                                                    <button  class="btn btn-info" disabled="disabled">Allocated</button>
+                                                                </center>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </td> 
+                                                            <td>
+                                                                <center>
+                                                                    <a href="delete_allocation.php?id=<?php echo $row['id'];?>" class="btn btn-danger btn-sm">
+                                                                        Delete
+                                                                    </a>
+                                                                </center>
+                                                            </td>      
+                                                        </tr>
+                                                    <?php 
+                                                    $i++;
+                                                    } 
+                                                    ?>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                <!-- row ends here -->
   
         </div>
         <!-- content-wrapper ends -->
+         <!-- container fluid -->
+            <div class="container-fluid">
+               
+            </div> 
+            <!-- container fluid ends here -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
