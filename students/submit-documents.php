@@ -1,4 +1,11 @@
+<?php
+  session_start();
+  if(isset($_SESSION['email']))
+  {
+    // code...
+ 
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,77 +29,67 @@
   <div class="container-scroller">
    
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="navbar-brand-wrapper d-flex justify-content-center">
-        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
-          <a class="navbar-brand brand-logo" href="index.html"><img src="./img/buk_logo.jpg" alt="logo" style="width: 40px;" /></a>
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-sort-variant"></span>
-          </button>
-        </div>  
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        
-        <ul class="navbar-nav navbar-nav-right">
-          
-          
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-              <img src="./img/buk_logo.jpg" alt="profile"/>
-              <span class="nav-profile-name">Louis Barnett</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="mdi mdi-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="mdi mdi-logout text-primary"></i>
-                Logout
-              </a>
-            </div>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="mdi mdi-menu"></span>
-        </button>
-      </div>
-    </nav>
+       <?php include "navbar.php"?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-    <?php include "sidebar.php"; ?>
+       <?php include "sidebar.php"; ?>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="d-flex justify-content-between flex-wrap">
-                <div class="d-flex align-items-end flex-wrap">
-                  
-                  <div class="d-flex">
-                    <i class="mdi mdi-home text-muted hover-cursor"></i>
-                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Submit documents&nbsp;/&nbsp;</p>
-           
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between flex-wrap">
+                  <div class="d-flex align-items-end flex-wrap">
+                    <div class="d-flex">
+                      <i class="mdi mdi-home text-muted hover-cursor"></i>
+                      <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Submit documents&nbsp;/&nbsp;</p>
+                    </div>
                   </div>
                 </div>
-               
               </div>
             </div>
-          </div>
-          
-         
-  
+            <div class="content-wrapper">
+                <div class="col-6 grid-margin stretch-card">
+                  <div class="card" style="margin-left:350px;">
+                      <div class="card-body">
+                          <h4 class="card-title">Fill The Form Bellow To Submit Your Project Work</h4>
+                            <form class="forms-sample">
+                                <div class="form-group">
+                                  <label for="exampleInputName1">SUbject</label>
+                                  <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject..." required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail3">Email address</label>
+                                  <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                <div class="form-group">
+                                  <label>File upload</label>
+                                  <div class="input-group col-xs-12">
+                                    <input type="file" class="form-control file-upload-info"  placeholder="Upload documents" name="file">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleTextarea1">Comments!</label>
+                                  <textarea class="form-control" id="comments" rows="4" name="comments"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary me-2" name="upload">Submit</button>
+                                <button class="btn btn-light">Cancel</button>
+                            </form>
+                        </div>
+                  </div>
+                </div>
+            </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="https://www.bootstrapdash.com/" target="_blank">bayero university </a>2023</span>
-        </div>
-        </footer>
-        <!-- partial -->
+            <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="https://www.bootstrapdash.com/" target="_blank">bayero university </a>2023</span>
+            </div>
+            </footer>
+            <!-- partial -->
       </div>
       <!-- main-panel ends -->
     </div>
@@ -124,4 +121,10 @@
 </body>
 
 </html>
+<?php
+   }
+   else{
+    header("Location:login.php");
+  }
+?>
 

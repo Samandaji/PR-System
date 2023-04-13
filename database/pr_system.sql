@@ -2,10 +2,16 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
+
 -- Host: 127.0.0.1
 -- Generation Time: Mar 26, 2023 at 01:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Generation Time: Mar 22, 2023 at 07:35 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -95,6 +101,20 @@ INSERT INTO `projects` (`sn`, `contributors`, `topic`, `abstract`, `supervisor`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `notification_id` int NOT NULL,
+  `student_id` int NOT NULL,
+  `supervisor_id` int NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -120,6 +140,22 @@ INSERT INTO `students` (`sn`, `reg_number`, `full_name`, `email`, `department`, 
 (3, 'CST/16/COM/00836', 'Auwal Ismail Muhammad', 'JAIZNANANA@GMAIL.COM', '2', '', '', 'JAIZ', 'JAIZ', '', ''),
 (1, 'CST/16/COM/00850', 'Abduhamid Idris', 'abdulhamididris16@gmail.com', 'Computer Science', 'Computer Science and Information Technology', '400', 'student', 'student', '03/05/2023', 'Male'),
 (2, 'CST/16/COM/44', 'Dauda Bala', 'daudabala@gmail.com', 'Computer Science', 'FCSIT', '3', 'DAUDA', 'BALA', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submissions`
+--
+
+CREATE TABLE `submissions` (
+  `submit_id` int NOT NULL,
+  `student_id` int NOT NULL,
+  `supervisor_id` int NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `file` varchar(50) NOT NULL,
+  `comments` varchar(250) NOT NULL,
+  `submission_date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -158,6 +194,7 @@ ALTER TABLE `administrator`
   ADD PRIMARY KEY (`sn`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
@@ -168,6 +205,12 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`sn`);
+=======
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`notification_id`);
+>>>>>>> Auwal_jaizz
 
 --
 -- Indexes for table `students`
@@ -175,6 +218,12 @@ ALTER TABLE `projects`
 ALTER TABLE `students`
   ADD PRIMARY KEY (`reg_number`),
   ADD UNIQUE KEY `sn` (`sn`);
+
+--
+-- Indexes for table `submissions`
+--
+ALTER TABLE `submissions`
+  ADD PRIMARY KEY (`submit_id`);
 
 --
 -- Indexes for table `supervisors`
@@ -206,10 +255,22 @@ ALTER TABLE `projects`
   MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `notification_id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
   MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `submissions`
+--
+ALTER TABLE `submissions`
+  MODIFY `submit_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `supervisors`
