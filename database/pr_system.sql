@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 26, 2023 at 01:59 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Generation Time: Apr 14, 2023 at 08:12 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `administrator` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `admin_id` varchar(200) NOT NULL,
   `fname` varchar(200) NOT NULL,
   `lname` varchar(200) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `administrator` (
   `email` varchar(200) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `administrator`
@@ -52,10 +52,10 @@ INSERT INTO `administrator` (`sn`, `admin_id`, `fname`, `lname`, `oname`, `email
 --
 
 CREATE TABLE `departments` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `department_name` varchar(200) NOT NULL,
   `department_id` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `departments`
@@ -70,12 +70,66 @@ INSERT INTO `departments` (`sn`, `department_name`, `department_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `sn` int NOT NULL,
+  `student_email` varchar(100) NOT NULL,
+  `supervisor_id` int DEFAULT NULL,
+  `admin_id` int DEFAULT NULL,
+  `subject` varchar(50) NOT NULL,
+  `notification_time` timestamp(5) NOT NULL DEFAULT CURRENT_TIMESTAMP(5)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`sn`, `student_email`, `supervisor_id`, `admin_id`, `subject`, `notification_time`) VALUES
+(1, '1', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(2, 'Array', NULL, NULL, 'Proposal', '2023-04-14 19:59:11.27456'),
+(3, 'Array', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(4, 'Array', NULL, NULL, 'Proposal', '2023-04-14 19:59:11.27456'),
+(5, 'Array', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(6, 'Array', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(7, 'Array', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(8, 'Array', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(9, 'Array', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(10, 'Array@gmail.com', NULL, NULL, 'Abstract', '2023-04-14 19:59:11.27456'),
+(11, 'JAIZNANANA@GMAIL.COM', NULL, NULL, 'Proposal', '2023-04-14 19:59:11.27456'),
+(12, 'JAIZNANANA@GMAIL.COM', NULL, NULL, 'Chapter', '2023-04-14 20:02:21.36220');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications_types`
+--
+
+CREATE TABLE `notifications_types` (
+  `sn` int NOT NULL,
+  `types` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `notifications_types`
+--
+
+INSERT INTO `notifications_types` (`sn`, `types`) VALUES
+(1, 'Proposal'),
+(2, 'Abstract'),
+(3, 'Chapter'),
+(8, 'Correction');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `projects`
 --
 
 CREATE TABLE `projects` (
-  `sn` int(11) NOT NULL,
-  `contributors` varchar(200) NOT NULL,
+  `sn` int NOT NULL,
+  `contributors` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `topic` varchar(200) NOT NULL,
   `abstract` text NOT NULL,
   `supervisor` varchar(200) NOT NULL,
@@ -83,14 +137,28 @@ CREATE TABLE `projects` (
   `year_of_graduation` varchar(200) NOT NULL,
   `department` varchar(200) NOT NULL,
   `project_file` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`sn`, `contributors`, `topic`, `abstract`, `supervisor`, `session`, `year_of_graduation`, `department`, `project_file`) VALUES
-(7, 'Abdulhamid Idris, Auwal Ismail Muhammad & Abubakar Usman', 'Solution of Linear Diophantine Equations using Modified Gauss-Jordan Elimination method', '\r\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'saminuaminu@gmail.com', '2026/2027', '2022', 'Software Engineering', '../uploads/citation tags.docx');
+(7, 'Abdulhamid Idris, Auwal Ismail Muhammad & Abubakar Usman', 'Solution of Linear Diophantine Equations using Modified Gauss-Jordan Elimination method', '\r\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'saminuaminu@gmail.com', '2026/2027', '2022', 'Software Engineering', '../uploads/citation tags.docx'),
+(8, NULL, 'adsdsd', 'hhhh', 'samandaji@gmail.com', '2022/2023', '2023', 'Software Engineering', '../uploads/IMG_20230414_102134_863.jpg'),
+(9, NULL, 'dfdfdf', 'ghhgh', 'samandaji@gmail.com', '2021/2022', '2023', 'Software Engineering', '../uploads/IMG_20230414_102134_863.jpg'),
+(10, NULL, 'adsdsd', 'hhh', 'saminuaminu@gmail.com', '2021/2022', '2023', 'Software Engineering', '../uploads/IMG_20230414_102134_863.jpg'),
+(11, NULL, 'dfdfdf', 'yyyy', 'saminuaminu@gmail.com', '2023/2024', '2023', 'Computer Science', '../uploads/IMG_20230414_102134_863.jpg'),
+(12, NULL, 'adsdsd', 'jjjjj', 'saminuaminu@gmail.com', '2021/2022', '2022', 'Cyber Security', '../uploads/rsz_img_20230412_170139_339.jpg'),
+(13, NULL, 'adsdsd', 'jjjjj', 'saminuaminu@gmail.com', '2021/2022', '2022', 'Cyber Security', '../uploads/rsz_img_20230412_170139_339.jpg'),
+(14, NULL, 'adsdsd', 'hhh', 'samandaji@gmail.com', '2022/2023', '2023', 'Software Engineering', '../uploads/IMG_20230414_102134_863.jpg'),
+(15, NULL, 'dfdfdf', 'hhh', 'saminuaminu@gmail.com', '2021/2022', '2022', 'Software Engineering', '../uploads/IMG_20230414_102134_863.jpg'),
+(16, NULL, 'adsdsd', 'hhhh', 'samandaji@gmail.com', '2022/2023', '2021', 'Software Engineering', '../uploads/rsz_img_20230414_102134_863.jpg'),
+(17, NULL, 'adsdsd', 'ju', 'saminuaminu@gmail.com', '2021/2022', '2022', 'Software Engineering', '../uploads/IMG_20230414_102134_863.jpg'),
+(18, NULL, 'adsdsd', 'hhh', 'samandaji@gmail.com', '2022/2023', '2021', 'Cyber Security', '../uploads/IMG_20230414_102134_863.jpg'),
+(19, NULL, 'adsdsd', 'HHH', 'saminuaminu@gmail.com', '2022/2023', '2022', 'Computer Science', '../uploads/IMG_20230414_102134_863.jpg'),
+(20, NULL, 'dfdfdf', 'nn', 'saminuaminu@gmail.com', '2021/2022', '2021', 'Cyber Security', '../uploads/rsz_img_20230414_102134_863.jpg'),
+(21, NULL, 'blockchain tech', 'test', 'saminuaminu@gmail.com', '2022/2023', '2022', 'Computer Science', '../uploads/IMG_20230414_102134_863.jpg');
 
 -- --------------------------------------------------------
 
@@ -99,7 +167,7 @@ INSERT INTO `projects` (`sn`, `contributors`, `topic`, `abstract`, `supervisor`,
 --
 
 CREATE TABLE `students` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `reg_number` varchar(200) NOT NULL,
   `full_name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
@@ -110,7 +178,7 @@ CREATE TABLE `students` (
   `password` varchar(200) NOT NULL,
   `date_added` varchar(200) NOT NULL,
   `gender` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `students`
@@ -128,7 +196,7 @@ INSERT INTO `students` (`sn`, `reg_number`, `full_name`, `email`, `department`, 
 --
 
 CREATE TABLE `supervisors` (
-  `sn` int(11) NOT NULL,
+  `sn` int NOT NULL,
   `staff_id` varchar(200) NOT NULL,
   `fname` varchar(200) NOT NULL,
   `lname` varchar(200) NOT NULL,
@@ -137,7 +205,7 @@ CREATE TABLE `supervisors` (
   `phone` varchar(11) NOT NULL,
   `password` varchar(200) NOT NULL,
   `date_added` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `supervisors`
@@ -161,6 +229,18 @@ ALTER TABLE `administrator`
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
+  ADD PRIMARY KEY (`sn`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`sn`);
+
+--
+-- Indexes for table `notifications_types`
+--
+ALTER TABLE `notifications_types`
   ADD PRIMARY KEY (`sn`);
 
 --
@@ -191,31 +271,43 @@ ALTER TABLE `supervisors`
 -- AUTO_INCREMENT for table `administrator`
 --
 ALTER TABLE `administrator`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `notifications_types`
+--
+ALTER TABLE `notifications_types`
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `supervisors`
 --
 ALTER TABLE `supervisors`
-  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sn` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
