@@ -46,7 +46,8 @@
 		}
 
 		public function data($email = null){
-			$data = $this->database->query("SELECT * FROM `students` 
+			$database = new dBase();
+			$data = $database->query("SELECT * FROM `students` 
 				WHERE `email` = ? LIMIT 1", [$email]);
 			return count($data) > 0 ? $data[0] : false;
 		}
